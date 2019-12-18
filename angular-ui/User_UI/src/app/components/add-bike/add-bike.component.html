@@ -1,0 +1,47 @@
+ <div class="container-fluid">
+        <div class="row">
+            <mat-toolbar color="accent" class="app-header">
+                <div class="logo-image" routerLink=""> </div>
+                <span class="nav-tool-items">
+            
+      </span>
+            </mat-toolbar>
+        </div>        <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+            <mat-card class="box">
+                <a mat-raised-button type="button" class="close" aria-label="Close" [routerLink]="['/admin']" routerLinkActive="router-link-active">
+                    <span aria-hidden="true">close</span>
+                </a>
+                <h2>Add New Bike</h2>                <form id="formNewBike" name="formNewBike" #productData="ngForm" (ngSubmit)="addNewBike(productData.value)">
+                    <table>
+                        <tr>
+                            <td><label>Reg.No</label></td>
+                            <td><input type="text" name="regno" id="regno" placeholder="regno" ngModel><br><br></td>
+                        </tr>
+                        <tr>
+                            <td><label>Vehicle No.</label></td>
+                            <td><input type="text" name="vehicleNo" id="vehicleNo" placeholder="vehicleNo" ngModel><br><br></td>
+                        </tr>
+                        <tr>
+                            <td> <label>Comments</label></td>
+                            <td><input type="text" name="comments" id="comments" placeholder="comments" ngModel><br><br></td>
+                        </tr>
+                        <tr>
+                            <td><label>Charge</label></td>
+                            <td><input type="text" name="charge" id="charge" placeholder="charge" ngModel><br><br></td>
+                        </tr>
+                        <tr>
+                            <td> <label>Station</label></td>
+                            <td><input type="text" name="station" id="station" placeholder="station" ngModel><br><br></td>
+                        </tr>
+                        <tr>
+                            <td><label>Meter Reading</label></td>
+                            <td><input type="text" name="meterReading" id="meterReading" placeholder="meterReading" ngModel><br><br></td>
+                        </tr>
+
+                    </table>
+                    <input type="submit" value="Add Bike">
+                </form>                <br>
+                <h3 *ngIf="isAdded">{{confirmationString}}</h3>
+            </mat-card>
+        </div>
+    </div>

@@ -1,0 +1,83 @@
+<div class="container-fluid">
+    <div class="row">
+        <mat-toolbar color="accent" class="app-header">
+            <div class="logo-image"> </div>
+            <div id="writing">
+                <p><strong> BOLT TO YOUR DESTINATION </strong></p>
+            </div>
+        </mat-toolbar>
+    </div>
+</div> 
+
+<div class="invoice-container">
+
+        <mat-card class="card-invoice">
+
+            <div class="card-header">
+                <h3 class="text-center"><strong>Feedback</strong></h3>
+            </div>
+
+            <!-- <mat-form-field id="rating" color="accent">
+                <mat-label>Select ride rating</mat-label>
+                <mat-select [(value)]="rating">
+                    <mat-option value="1">1</mat-option>
+                    <mat-option value="2">2</mat-option>
+                    <mat-option value="3">3</mat-option>
+                    <mat-option value="4">4</mat-option>
+                    <mat-option value="5">5</mat-option>
+                </mat-select>
+            </mat-form-field> -->
+
+            <ngb-rating [(rate)]="currentRating"></ngb-rating>
+            <hr>
+            <pre>Your Rating: <b>{{currentRating}}</b></pre>
+
+            <mat-form-field class="example-full-width" color="accent">
+                <textarea [(ngModel)]="comment" matInput placeholder="Leave a comment"></textarea>
+            </mat-form-field>
+                  
+            <!-- <p>You selected: {{selected}}</p> -->
+
+        </mat-card>
+
+</div>
+
+<div class="invoice-container" id="invoice">
+    <mat-card class="card-invoice">
+                <div class="card-header">
+                    <h3 class="text-center"><strong>BOLT Invoice</strong></h3>
+                </div>
+                <div class="card-block">
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <td class="text-center"><strong>Start Station</strong></td>
+                                    <td class="text-center"><strong>End Station</strong></td>
+                                    <td class="text-center"><strong>Travel Distance</strong></td>
+                                    <td class="text-center"><strong>Travel Duration</strong></td>
+                                    <td class="text-center"><strong>Fare</strong></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center">{{startStation}}</td>
+                                    <td class="text-center">{{endStation}}</td>
+                                    <td class="text-center">{{travelDistance}} km</td>
+                                    <td class="text-center">{{travelDuration}} min.</td>
+                                    <td class="text-center">Rs.{{fare}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+    <div class="container" style="text-align: center;">
+        <ngx-barcode [bc-value]="bookingId" [bc-display-value]="true"></ngx-barcode>
+    </div>
+
+</mat-card>
+
+    <a mat-stroked-button (click)="logOut()" color="accent" class="btn-block"><strong>SIGN OUT</strong></a>
+
+</div>

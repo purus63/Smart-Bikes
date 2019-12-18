@@ -1,0 +1,187 @@
+﻿{
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Forum Mall",
+        "description": "Bool Station"
+      },
+      "geometry": {
+        "coordinates": [
+          77.611312,
+          12.934603
+        ],
+        "type": "Point"
+      }
+    },
+   {
+      "type": "Feature",
+      "properties": {
+        "title": "St. Johns Medical College",
+        "description": "Bool Station"
+      },
+      "geometry": {
+        "coordinates": [
+          77.618436,
+          12.99369
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Phoenix Marketcity",
+        "description": "Bool Station"
+      },
+      "geometry": {
+        "coordinates": [
+          77.696404,
+          12.997058
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Bangalore Palace",
+        "description": "Bool Station"
+      },
+      "geometry": {
+        "coordinates": [
+          77.5920115,
+          12.9983585
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Lalbagh Botanical Garden",
+        "description": "Bool Station"
+      },
+      "geometry": {
+        "coordinates": [
+          77.586951,
+          12.948948
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Visvesvaraya Industrial and Technological Museum",
+        "description": "Bool Station"
+      },
+      "geometry": {
+        "coordinates": [
+          77.596463,
+          12.974992
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "ISKCON Bangalore",
+        "description": "Bool Station"
+      },
+      "geometry": {
+        "coordinates": [
+          77.55149,
+          13.01089
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Domlur",
+        "description": "Bool Station"
+      },
+      "geometry": {
+        "coordinates": [
+          77.63613,
+          12.96082
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Innovative Multiplex Marthahalli",
+        "description": "Bool Station"
+      },
+      "geometry": {
+        "coordinates": [
+          77.698981,
+          12.951922
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Forum Shantiniketan Whitefield",
+        "description": "Bool Station"
+      },
+      "geometry": {
+        "coordinates": [
+          77.72778,
+          12.989069
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "JP Nagar Phase 1",
+        "description": "Bool Station"
+      },
+      "geometry": {
+        "coordinates": [
+          77.579325,
+          12.912064
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Vijaya Nagar",
+        "description": "Bool Station"
+      },
+      "geometry": {
+        "coordinates": [
+          77.532973,
+          12.966154
+        ],
+        "type": "Point"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Electronic City",
+        "description": "Bool Station"
+      },
+      "geometry": {
+        "coordinates": [
+          77.6727,
+          12.8458
+        ],
+        "type": "Point"
+      }
+    }
+  ],
+  "type": "FeatureCollection"
+}

@@ -1,0 +1,14 @@
+#box{
+    width: fit-content;
+}
+
+a{
+    background-color: #ffc107;
+    color: white;
+    margin-left: 200px;
+    
+}
+
+#content{
+    margin-right: 300px;
+}

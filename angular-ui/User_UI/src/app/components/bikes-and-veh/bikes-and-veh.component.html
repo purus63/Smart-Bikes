@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<div id="float">
+
+    <mat-form-field id="Search">
+
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search Here">
+
+    </mat-form-field>
+
+    <div id="add_button">
+
+        <button type="button" class="btn btn-default">
+
+            <a routerLink="/addbike">Add Bike</a>
+
+        </button>
+
+    </div>
+
+</div>
+
+​
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <ng-container matColumnDef="regNo">
+
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> RegNo </th>
+
+        <td mat-cell *matCellDef="let element"> {{element.regNo}} </td>
+
+    </ng-container>
+    ​
+    <ng-container matColumnDef="status">
+
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+
+        <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+
+    </ng-container>
+
+    ​
+
+    <ng-container matColumnDef="feedbackOrComments">
+
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Comments </th>
+
+        <td mat-cell *matCellDef="let element"> {{element.feedbackOrComments}} </td>
+
+    </ng-container>
+
+    ​
+
+    <ng-container matColumnDef="station">
+
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Station </th>
+
+        <td mat-cell *matCellDef="let element"> {{element.station}} </td>
+
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+
+        <td mat-cell *matCellDef="let element">
+
+            <button type="button" class="btn btn-danger" mat-button (click)=" removeBike(element.regNo)">Remove</button>
+
+        </td>
+
+    </ng-container>
+
+    ​
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+    <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
+
+</table>

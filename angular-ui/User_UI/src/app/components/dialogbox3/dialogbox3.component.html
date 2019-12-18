@@ -1,0 +1,21 @@
+
+<h1 mat-dialog-title>Enter the amount</h1>
+    <form [formGroup]="registerForm" autocomplete="off" novalidate (ngSubmit)="onSubmit()" id ="form">
+        <div mat-dialog-content>
+            <mat-form-field id="field">
+                <input matInput type="text" [(ngModel)]="amount" name = "amount" id ="amount" formControlName="amount" [ngClass]="{ 'is-invalid': submitted && f.amount.errors }" placeholder="Enter the amount" maxlength="4" 
+                   inputmode="numeric" pattern="[0-9]*" digitOnly>
+                <mat-hint align="end">Add upto 9999.</mat-hint><br>
+                <div *ngIf="submitted && f.amount.errors" class="invalid-feedback">
+                    <mat-error *ngIf="f.amount.errors.required">Please enter the amount</mat-error>
+                </div>
+            </mat-form-field>  
+        </div>
+
+        <div mat-dialog-actions id="action">
+            <button mat-button type="button" id = "moneyadd" class="btn btn-warning" (click)="onSubmit()">Proceed to Add Money</button>
+        </div>
+    </form>
+
+
+

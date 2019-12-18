@@ -1,0 +1,62 @@
+<!-- Start of nav bar -->
+<!-- Toolbar -->
+<div class="container-fluid">
+    <div class="row">
+        <mat-toolbar color="accent" class="app-header">
+            <div class="logo-image"> </div>
+            <div id="tagline">
+                <p><strong> BOLT TO YOUR DESTINATION. </strong></p>
+                
+            </div>
+            <span id="greetuser">
+                <h4>Hi, {{greetUser}}</h4>
+            </span>
+            
+            <span class="nav-tool-items">
+            <a mat-raised-button (click)=dologOut() routerLink="/logout" routerLinkActive="active">Sign Out</a>
+    
+        </span>
+        </mat-toolbar>
+    </div>
+
+
+    <!-- End of nav bar -->
+    <!-- Start of Tab-section -->
+    <div class="row">
+        <div id="tab">
+            <mat-tab-group [selectedIndex]="selected" mat-stretch-tabs>
+                <mat-tab label="Home">
+                    <p>Locate the nearest station around you.</p>
+                    <mgl-map style="height: 350px; width: auto" [style]="'mapbox://styles/saurabhbagade/ck40xqv690ecg1cpglgfvr4yp'" [zoom]="[11]" [center]="[77.641431, 12.970582]">
+                        <!-- <mgl-layer  (click)="onClick($event)">
+                                    
+                                </mgl-layer> -->
+                    </mgl-map>
+                </mat-tab>
+
+                <mat-tab label="Upload Documents">
+                    <app-upload-documents></app-upload-documents>
+                </mat-tab>
+                <mat-tab label="Wallet">
+                    <app-wallet></app-wallet>
+                </mat-tab>
+                <mat-tab label="History">
+                    <app-history></app-history>
+                </mat-tab>
+                <mat-tab label="Support">
+                    <div class="support">
+                        <h2>
+                            <p>Please contact us: We are happy to help.<br>Phone Number: 9019603550 <br> Email: support@bool.com
+
+                            </p>
+                            <p>For more assistance, have a chat with us</p>
+                            <a mat-raised-button routerLink="/nquireit" routerLinkActive="active">Chat Now</a>
+                        </h2>
+
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+        <!-- End of Tab-section -->
+
+    </div>

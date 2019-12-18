@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~mapbox-gl/dist/mapbox-gl.css";
+@import "~@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css";
+html,
+body {
+    height: 100%;
+    margin: auto;
+}
+
+button,
+a {
+    margin: 5px !important;
+    text-decoration: none !important;
+}
+
+* {
+    font-family: 'Quicksand'/* Replace with your custom font */
+    , sans-serif !important;
+    /* Add !important to overwrite all elements */
+}
+
+.modal-backdrop {
+    z-index: -1 !important;
+}
+
+.modal {
+    z-index: 200 !important;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-form-field.mat-form-field {
+    font-size: 18px;
+}

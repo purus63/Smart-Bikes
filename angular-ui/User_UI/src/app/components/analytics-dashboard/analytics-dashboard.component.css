@@ -1,0 +1,84 @@
+/* 
+#first_div{
+    width:30px;
+    display:inline-block;
+    
+}
+#tot-bikes{
+    float: right;
+    height: 30%;
+}
+#tot-users{
+    float: right;
+    height: 30%;
+
+}
+#checking{
+    width: 30px;
+    
+    float: right;
+}
+#para{
+    float: left;
+}
+#tot-dist{
+    float: right;
+    height: 30%;
+}
+#left-div{
+    float: left;
+
+}
+ */
+/* #right-div{
+    float: right;
+    width: 30%;
+    flex: 0 0 20%;
+  
+} 
+#mid-div{
+    flex: 0 1 40%;
+    
+}
+#left-div{
+    flex: 1 0 60%;
+    
+}
+#wrapper {
+    display: flex;
+    height: 100%;
+  }
+  
+  #second_div{
+    float: left;
+ } */
+
+
+ /* .flex-container {
+   display: flex;
+   flex-wrap: wrap;
+   background-color: DodgerBlue;
+ }
+ 
+ .flex-container > div {
+   background-color: #f1f1f1;
+   width: 100px;
+   margin: 10px;
+   text-align: center;
+   line-height: 75px;
+   font-size: 30px;
+ } */
+ .grid {
+    display: flex;                       
+    flex-wrap: wrap;                    
+    justify-content: space-around;
+    
+  }
+  .cell {
+    flex: 0 0 32%;                       
+    height: 250px;
+    margin-bottom: 5px;
+    /* background-color: #999; */
+  }
+  
+  

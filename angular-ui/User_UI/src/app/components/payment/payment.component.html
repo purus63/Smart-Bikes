@@ -1,0 +1,74 @@
+
+
+<div class="container-fluid">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6 col-dash">
+        <div class="container">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-50">
+                        <div class="row">
+                            <div class= "col-50">
+                                <h3>Payment</h3>
+                            </div>
+                           
+                            <div class= "col-60" id = "money">
+                                <h3><span class="badge badge-secondary">Amount to be paid: ₹{{ amount }}</span></h3>
+                            </div>
+                        </div>
+
+                        <label for="fname">Accepted Cards</label>
+                        <div class="icon-container">
+                            <img src="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/visa-512.png">
+                            <img src="https://cdn3.iconfinder.com/data/icons/payment-method-1/64/_Mastercard-512.png">
+                            <img src ="https://cdn4.iconfinder.com/data/icons/circle-payment/32/payment_001-rupay-512.png">
+                        </div>
+                        <label for="ccnum">Credit/Debit Card Number</label>
+                        <input [(ngModel)]="cardNumber" id="ccnum" name="cardNumber" formControlName="cardNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cardNumber.errors }" type="text"  placeholder="Credit Card #" maxlength="16" 
+                        inputmode="numeric" pattern="[0-9]*" digitOnly>
+                        <div *ngIf="submitted && f.cardNumber.errors" class="invalid-feedback">
+                            <p *ngIf="f.cardNumber.errors.required">Card Number is required</p>
+                        </div>
+                            
+                        <label for="expmonth">Exp Month</label>
+                        <input [(ngModel)]="expMonth" id="expmonth" name="expMonth" formControlName="expMonth" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.expMonth.errors }" type="text" 
+                            placeholder="Expiration Month" maxlength="2" inputmode="numeric" ng-pattern="[0-9]*" digitOnly>
+                        <div *ngIf="submitted && f.expMonth.errors" class="invalid-feedback">
+                            <p *ngIf="f.expMonth.errors.required">Expiry Month is required</p>
+                            <p *ngIf="f.expMonth.errors.monthRange">Please enter the month between 1-12</p>
+                        </div>
+                                
+
+                        <div class="row">
+                            <div class="col-50">
+                                <label for="expyear">Exp Year</label>
+                                <input [(ngModel)]="expYear" id="expyear" name="expYear" formControlName="expYear" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.expYear.errors }" type="text"
+                                    placeholder="Expiration Year" maxlength="2" 
+                                    inputmode="numeric" pattern="[0-9]*" digitOnly>
+                                <div *ngIf="submitted && f.expYear.errors" class="invalid-feedback">
+                                    <p *ngIf="f.expYear.errors.required">Expiry Year is required</p>
+                                </div>
+                                        
+                            </div>
+                            <div class="col-50">
+                                <label for="cvv">CVV</label>
+                                <input [(ngModel)]="cvc" id="cvv" name="cvc" formControlName="cvc" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cvc.errors }" type="password" placeholder="CVV" maxlength="3" 
+                                inputmode="numeric" pattern="[0-9]*" digitOnly>
+                                <div *ngIf="submitted && f.cvc.errors" class="invalid-feedback">
+                                    <p *ngIf="f.cvc.errors.required">CVV is required</p>
+                                </div>
+                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" value="Pay Now" class="btn" id="button" >
+                <ngx-spinner>
+                    <p class="loading"><strong>Paying via Stripe......Please Wait !!</strong></p>
+                </ngx-spinner> 
+            </form>
+        </div>
+    </div>
+</div>
+
+<button style="width: 1px; height: 100%" id="btnn" (click)="openDialog()"></button>

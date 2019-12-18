@@ -1,0 +1,72 @@
+<div class="sign-up">
+
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+            <div id="intro2" class="fb-body"><h2><strong style="color: black;">Update Your</strong><strong style="color:#FFC107;"> Profile</strong> </h2></div>
+              <div id="img2" class="fb-body"></div>
+              <mat-card>
+
+                  <div id="form3" class="fb-body" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div></div>
+                        <mat-form-field appearance="outline" >
+                              <mat-label>Firstname</mat-label>
+                              <input matInput [(ngModel)]="firstname" formControlName="firstname"  [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }"required  [disabled] = disabled>
+                          <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+                            <p *ngIf="f.firstname.errors.required">FirstName is required</p>
+                          </div>
+                        </mat-form-field> &nbsp;  &nbsp;
+                        <mat-form-field appearance="outline">
+                        <mat-label>Lastname</mat-label>
+                        <input  matInput [(ngModel)]="lastname"  formControlName="lastname" required [ngClass]="{ 'is-invalid': submitted && f.lastname.errors }" [disabled] = disabled>
+                          <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
+                            <p *ngIf="f.lastname.errors.required">LastName is required</p>
+                          </div>
+                        </mat-form-field>
+
+                    <mat-form-field appearance="outline" hintLabel=" 16 digits only" >
+                              <mat-label>Aadhar No.</mat-label>
+                              <input  matInput [(ngModel)]="aadharNo" formControlName="aadharNo"  [ngClass]="{ 'is-invalid': submitted && f.aadharNo.errors }"maxlength="16"
+                                      inputmode="numeric" pattern="[0-9]*" digitOnly >
+                      <div *ngIf="submitted && f.aadharNo.errors" class="invalid-feedback">
+                        <p *ngIf="f.aadharNo.errors.required">AadharNo is required</p>
+                      </div>
+                          </mat-form-field>
+                      <div class="example-container">
+                          <mat-form-field appearance="outline"  >
+                            <mat-label>Email</mat-label>
+                              <input matInput  [formControl]="email" required  >
+                              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                          </mat-form-field>
+                      </div>
+                      <mat-form-field appearance="outline" class="example-full-width" >
+                        <mat-label>Date of Birth</mat-label>
+                          <input [(ngModel)]="dob" matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" required formControlName="dob"  [ngClass]="{ 'is-invalid': submitted && f.dob.errors }"  [disabled] = disabled>
+                        <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+                          <p *ngIf="f.dob.errors.required">Date of Birth is required</p>
+                        </div>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+                      <br>
+                      <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" [(ngModel)]="gender" [ngModelOptions]="{standalone: true}" required >
+                          <mat-radio-button class="example-radio-button" value="male">Male</mat-radio-button> &nbsp;
+                          <mat-radio-button class="example-radio-button" value="female">Female</mat-radio-button>
+                      </mat-radio-group><br><br>
+
+                      <div class="form-group">
+                          <mat-label>Aadhar-card Front and Back</mat-label>
+                        <mat-hint>(Only jpg and png files below 1mb)</mat-hint>
+                        <br>
+                        <input type="file" formControlName="file" (change)="fileUploads($event)" required  [disabled] = disabled ><br><p></p>
+                          <input id ='Document' type="file" formControlName="files" (change)="fileUpload($event)" required   [disabled] = disabled><br>
+                      </div>
+                      <div class="mat-button">
+                          <button type="button" [disabled]="(disableFor1 || disableFor2)" mat-raised-button color="accent" class="btn-btn-success" (click)="onSubmit()">UpForVerification</button>
+                      </div>
+                  </div>
+              </mat-card>
+          </div>
+      </div>
+  </div>
+</div>

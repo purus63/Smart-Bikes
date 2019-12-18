@@ -1,0 +1,59 @@
+.font-default {
+  all: revert !important;
+}
+
+.flex-container{
+ 
+  margin: 5% 35% 6% ;
+  
+  
+
+}
+
+#button {
+  position: relative;
+  text-align: center;
+  display: flex;
+  /* margin-left: 90px; */
+  background: rgb(39, 34, 36);
+  color: #FFC107;
+  font-size: 15px;
+  margin-top: 10px;
+  
+}
+
+#button:hover{
+  background: #FFC107;
+    color: white;
+}
+
+#heading{
+  text-align: center;
+  /* margin-left: 90px; */
+}
+
+h3{
+  /* margin-left: 130px; */
+  padding-right: 20px;
+  
+}
+
+#moneyadd{
+  background-color: #FFC107;
+  color: white;
+
+}
+
+.flex-row{
+  display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;  display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    
+}
+.flex-column{
+  width: 100%;
+}

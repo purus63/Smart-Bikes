@@ -1,0 +1,23 @@
+
+<div class="flex-container">
+  <div class="flex-row">
+    <div class="flex-column">
+      <h2 class="3">
+        <span class="text-muted" id="heading"><strong style="color:#FFC107;">Bolt</strong><strong style="color: black;"> Wallet </strong></span>
+      </h2><br>
+      <ul class="list-group ">
+        <li style="z-index: -1 !important;" class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Available Balance</h6>
+            <small class="text-muted">Recharge anytime</small>
+          </div>
+          <span class="text-muted">₹{{ wallet_balance }}</span>
+        </li>
+      </ul>
+      <input type="submit" value="Add Money to Wallet" class="btn btn-default btn-lg" id="button" (click)="openDialog()">
+    </div>
+  </div>
+</div>
+
+
+

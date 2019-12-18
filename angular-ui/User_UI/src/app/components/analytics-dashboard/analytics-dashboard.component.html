@@ -1,0 +1,73 @@
+
+  <div class="grid">
+    <div class="cell">
+      <p>Ride Metrics</p>
+      <div  id='first_div'>
+        <canvas
+            baseChart
+            [chartType]="'bar'"
+            [datasets]="chartData"
+            [labels]="chartLabels"
+            [options]="chartOptions"
+            [legend]="true"
+            (chartClick)="onChartClick($event)">
+        </canvas>
+      </div>
+    </div>
+    <div class="cell">
+      <p>Bike Distribution</p>
+      <div  id='mid-div'>
+        <canvas
+            baseChart
+            [chartType]="'pie'"
+            [datasets]="chartDatan"
+            [labels]="chartLabelsn"
+            [options]="chartOptions"
+            [legend]="true"
+            (chartClick)="onChartClick($event)">
+        </canvas>
+      </div>
+    </div>
+    <div class="cell">
+      <div id='tot-bikes'>
+        <h1>Total No. of Bikes</h1>
+        <p id='para' style="font-size:30px;">{{bikes_no}}</p>
+      
+      </div>
+    </div>
+    <div class="cell">
+        <p>Revenue Metrics</p>
+      <div  id='second_div'>
+        <canvas
+            baseChart
+            [chartType]="'line'"
+            [datasets]="chartData"
+            [labels]="chartLabels"
+            [options]="chartOptions"
+            [legend]="true"
+            (chartClick)="onChartClick($event)">
+        </canvas>
+    </div>
+    </div>
+    <div class="cell"></div>
+    <div class="cell">
+      <div id='tot-users'>
+        <h1>Total No. of users</h1>
+        <p id='para' style="font-size:30px;">{{users_no}}</p>
+      </div>
+    </div>
+    <div class="cell"></div>
+    <div class="cell">
+      <div id='av-rides'>
+        <h1>Average rides per day</h1>
+        <p id='para' style="font-size:30px;">{{av_rides}}</p>
+      </div>
+    </div>
+    <div class="cell">
+      <!--<div id='tot-dist'>-->
+      <!--  <h1>Total Distance Travelled</h1>-->
+      <!--  <p id='para' style="font-size:30px;">{{kms_count}} Kms</p>-->
+      <!--  </div>-->
+    </div>
+  </div>
+  

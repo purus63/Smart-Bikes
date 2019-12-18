@@ -1,0 +1,105 @@
+.logo-image {
+    background-image: url(../../bolt.svg);
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 90px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: -6px;
+    outline: none;
+}
+  
+  .app-header {
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+}
+  
+  #writing {
+    margin-top: 20px;
+  }
+
+.invoice-container {
+  margin-top: 3em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-center {
+  width: 60%;
+}
+
+.card-center>mat-card-title {
+  text-align: center;
+}
+
+.card-invoice {
+  width: 80%;
+}
+
+.btn-block {
+  width: 20%;
+  text-align: center;
+  margin-top: 1em;
+  white-space: normal;
+}
+
+.mat-stroked-button {
+  border: 1px solid currentColor;
+  line-height: 54px;
+  background: rgb(39, 34, 36);
+  color: #FFC107;
+  font-size: 17px;
+}
+
+.mat-stroked-button:hover {
+  background: #FFC107;
+  color: black;
+  text-decoration: none;
+}
+
+.table > tbody > tr > .emptyrow {
+  border-top: none;
+}
+
+.table > thead > tr > .emptyrow {
+  border-bottom: none;
+}
+
+.card-header {
+  background-color: #ffd740;
+}
+
+.fa-3 {
+  font-size: 5em;
+  margin-left: 0.5em;
+}
+
+.barcode {
+  width: 40%;
+  height: 20%;
+}
+
+.container-fluid {
+  margin: 4em 0 2em;
+  width: 80%;
+  text-align: center;
+}
+
+#invoice {
+  margin-bottom: 4em;
+}
+
+#rating {
+  margin-top: 1em;
+}
+
+.example-full-width {
+  width: 100%;
+}

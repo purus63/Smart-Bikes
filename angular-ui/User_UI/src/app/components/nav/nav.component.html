@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <div class="row">
+        <mat-toolbar color="accent" class="app-header">
+            <div class="logo-image" routerLink=""> </div>
+            <div id="writing">
+                <p><strong> BOLT TO YOUR DESTINATION </strong></p>
+            </div>
+            <span class="nav-tool-items">
+            </span>
+        </mat-toolbar>
+    </div>
+    <div class="w3-row">
+        <mat-tab-group mat-stretch-tabs>
+            <mat-tab label="Analytics Dashboard">
+                <app-analytics-dashboard></app-analytics-dashboard> 
+            </mat-tab>
+            <mat-tab label="Find User">
+                <app-getusers></app-getusers>
+            </mat-tab>
+            <mat-tab label="Bikes and Stations">
+                <app-bikes-and-veh></app-bikes-and-veh>
+            </mat-tab>
+            <mat-tab label="Pending Approvals"> 
+                <app-deleteuser></app-deleteuser>
+            </mat-tab>
+            <mat-tab label="Bike History">
+              <app-bike-history></app-bike-history>
+            </mat-tab>
+         
+            
+        </mat-tab-group>
+    </div>
+</div>

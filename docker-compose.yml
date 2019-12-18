@@ -1,0 +1,340 @@
+version: '3'
+
+volumes:
+  prometheus_data: {}
+  grafana_data: {}
+
+networks:
+  front-tier:
+  back-tier:
+
+services:
+ mongo :
+  image : mongo:latest
+  ports:
+    - "27017:27017"
+  container_name : dockers-mongo
+  network_mode: host
+  healthcheck:
+    test: "exit 0"
+#  environment :
+#       MONGO_ROOT_PASSWORD : root
+#       MONGO_DATABASE : springboot-user
+#       MONGO_USER : root_app
+#       MONGO_PASSWORD : root123
+
+ mysql:
+   image: mysql:5.7
+   container_name: mysql-container
+   network_mode: host
+   ports:
+     - 3306:3306
+   restart: always
+   environment:
+     MYSQL_USER: root
+     MYSQL_ROOT_PASSWORD: Root@123
+   entrypoint:
+     sh -c "
+     echo 'CREATE DATABASE IF NOT EXISTS bookingauth;' > /docker-entrypoint-initdb.d/init.sql;
+     /usr/local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+     "
+   volumes:
+     - /db-data:/var/lib/mysql
+
+ user-management:
+   image: user-management
+   build: user-management-service/
+   restart: always
+   network_mode: host
+   container_name: user-management
+   healthcheck:
+     test: "exit 0"
+   depends_on:
+     - mongo
+     - zuul
+     - eureka
+   ports:
+     - 8083:8083
+
+
+ auth:
+   image: auth-service
+   build: auth-service/
+   restart: always
+   network_mode: host
+   container_name: auth-service
+   healthcheck:
+     test: "exit 0"
+   depends_on:
+     - mysql
+     - zuul
+     - eureka
+   ports:
+     - 8084:8084
+   expose:
+     - 8084
+
+ authconsole:
+   image: auth-service-console
+   build: auth-service-console/
+   restart: always
+   network_mode: host
+   container_name: auth-service-console
+   healthcheck:
+     test: "exit 0"
+   depends_on:
+     - mysql
+     - zuul
+     - eureka
+   ports:
+     - 8082:8082
+   expose:
+     - 8082
+
+ payment:
+   image: payment-service
+   build: payment-service/
+   restart: always
+   network_mode: host
+   container_name: payment-service
+   healthcheck:
+     test: "exit 0"
+   depends_on:
+     - mongo
+     - zuul
+     - eureka
+   ports:
+     - 8086:8086
+
+ asset-management:
+   image: asset-management
+   build: asset-management-service/
+   restart: always
+   network_mode: host
+   healthcheck:
+     test: "exit 0"
+   container_name: management
+   depends_on:
+     - mongo
+     - zuul
+     - eureka
+   ports:
+     - 8085:8085
+
+
+ zuul:
+  image: zuul-service
+  build: zuul-service/
+  restart: always
+  network_mode: host
+  healthcheck:
+    test: "exit 0"
+  container_name: zuul-service
+  ports:
+    - 8081:8081
+
+ 
+ eureka:
+  image: eureka-service
+  build: eureka-service/
+  restart: always
+  network_mode: host
+  healthcheck:
+    test: "exit 0"
+  container_name: eureka-service
+  ports:
+    - 8761:8761
+
+ config:
+  image: config-service
+  build: config-service/
+  restart: always
+  network_mode: host
+  healthcheck:
+    test: "exit 0"
+  container_name: config-service
+  ports:
+    - 8888:8888
+
+
+ kafka:
+    image: wurstmeister/kafka
+    container_name: kafka
+    restart: always
+    ports:
+      - "9092:9092"
+
+    network_mode: "host"
+
+    deploy:
+      replicas: 3
+
+    environment:
+      - KAFKA_ADVERTISED_HOST_NAME=localhost
+      - KAFKA_ADVERTISED_PORT=9092
+      - KAFKA_ZOOKEEPER_CONNECT=localhost:2181
+    depends_on:
+      - zookeeper
+ zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - "2181:2181"
+
+    network_mode: "host"
+
+    restart: always
+
+    environment:
+      - KAFKA_ADVERTISED_HOST_NAME=localhost
+
+ userui:
+     image: userui
+     build: angular-ui/User_UI/
+     hostname: host
+     container_name: userui
+     network_mode: 'host'
+#     build: .
+     ports:
+       - "8088:8088"
+ bikeui:
+     image: bikeui
+     build: angular-ui/bike-console/
+     hostname: host
+     container_name: bikeui
+     network_mode: 'host'
+#     build: .
+     ports:
+       - 8089:8089
+
+
+ booking:
+   image: booking-service
+   build: booking-service/
+   restart: always
+   network_mode: host
+   container_name: booking-service
+   healthcheck:
+     test: "exit 0"
+   depends_on:
+     - zookeeper
+     - kafka
+     - mysql
+     - zuul
+     - eureka
+   ports:
+     - 8090:8090
+   expose:
+     - 8090
+ 
+ notification:
+   image: notification-service
+   build: notification-service/
+   restart: always
+   network_mode: host
+   container_name: notification-service
+   healthcheck:
+     test: "exit 0"
+   depends_on:
+     - zuul
+     - eureka
+   ports:
+     - 8087:8087
+   expose:
+     - 8087
+
+ prometheus:
+    image: prom/prometheus:v2.1.0
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+    ports:
+      - 9090:9090
+    links:
+      - cadvisor:cadvisor
+      - alertmanager:alertmanager
+    depends_on:
+      - cadvisor
+    networks:
+      - back-tier
+    restart: always
+#    deploy:
+#      placement:
+#        constraints:
+#          - node.hostname == ${HOSTNAME}
+
+ node-exporter:
+    image: prom/node-exporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command: 
+      - '--path.procfs=/host/proc' 
+      - '--path.sysfs=/host/sys'
+      - --collector.filesystem.ignored-mount-points
+      - "^/(sys|proc|dev|host|etc|rootfs/var/lib/docker/containers|rootfs/var/lib/docker/overlay2|rootfs/run/docker/netns|rootfs/var/lib/docker/aufs)($$|/)"
+    ports:
+      - 9100:9100
+    networks:
+      - back-tier
+    restart: always
+    deploy:
+      mode: global
+
+ alertmanager:
+    image: prom/alertmanager
+    ports:
+      - 9093:9093
+    volumes:
+      - ./alertmanager/:/etc/alertmanager/
+    networks:
+      - back-tier
+    restart: always
+    command:
+      - '--config.file=/etc/alertmanager/config.yml'
+      - '--storage.path=/alertmanager'
+#    deploy:
+#      placement:
+#        constraints:
+#          - node.hostname == ${HOSTNAME}
+ cadvisor:
+    image: google/cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    ports:
+      - 8080:8080
+    networks:
+      - back-tier
+    restart: always
+    deploy:
+      mode: global
+
+ grafana:
+    image: grafana/grafana
+    user: "104"
+    depends_on:
+      - prometheus
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
+    env_file:
+      - ./grafana/config.monitoring
+    networks:
+      - back-tier
+      - front-tier
+    restart: always
+ 
+
+
+
+

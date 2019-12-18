@@ -1,0 +1,37 @@
+#map { 
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:100%; 
+}
+
+body { margin:0; padding:0; }
+
+.btn-block {
+    width: 10%;
+    white-space: normal;
+}
+
+.mat-raised-button {
+    color: rgb(39, 34, 36);
+    background: #FFC107;  
+}
+
+.mat-raised-button:hover {
+    color: #FFC107;
+    background: black;
+    text-decoration: none;
+  }
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
+    flex-direction: row;
+}
+
+#back {
+    margin-top: 0;
+    margin-left: 1em;
+  }
+  

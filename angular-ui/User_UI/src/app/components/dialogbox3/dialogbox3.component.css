@@ -1,0 +1,27 @@
+
+#form{
+    margin: 20px 20px 20px 20px;
+}
+
+h1{
+    margin-left: 40px;
+}
+
+#field{
+    margin-left: 17px;
+}
+
+#moneyadd{
+    background: rgb(39, 34, 36);
+    color: #FFC107;
+    font-size: 17px;
+}
+
+#moneyadd:hover{
+    background: #FFC107;
+    color: white;
+}
+
+#action{
+    margin-top: 20px;
+}
